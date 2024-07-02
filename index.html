@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
     <!-- My CSS -->
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/style.css" />
 
     <title>My Portfolio | Sahlan Mufid</title>
   </head>
@@ -215,15 +215,15 @@
             <form name="sahlan-contact-form">
               <div class="mb-3">
                 <label for="name" class="form-label"><i class="bi bi-person-circle"></i> Username</label>
-                <input type="text" class="form-control" id="name" aria-describedby="name" name="nama" />
+                <input type="text" class="form-control" id="name" aria-describedby="name" name="nama" required/>
               </div>
               <div class="mb-3">
                 <label for="email" class="form-label"><i class="bi bi-envelope-fill"></i> Email address</label>
-                <input type="email" class="form-control" id="email" aria-describedby="email" name="email" />
+                <input type="email" class="form-control" id="email" aria-describedby="email" name="email" required/>
               </div>
               <div class="mb-3">
                 <label for="pesan" class="form-label"><i class="bi bi-chat-dots-fill"></i> Message</label>
-                <textarea class="form-control" id="pesan" rows="3" name="pesan"></textarea>
+                <textarea class="form-control" id="pesan" rows="3" name="pesan" required></textarea>
               </div>
               <button type="submit" class="btn btn-primary btn-kirim">Send</button>
               <button class="btn btn-primary btn-loading d-none" type="button" disabled>
@@ -251,56 +251,9 @@
     <!-- footer end -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
-      const galleryImage = document.querySelectorAll('.gallery-img');
-
-      galleryImage.forEach((img, i) => {
-        img.dataset.aos = 'zoom-in-up';
-        img.dataset.aosDelay = i * 100;
-        img.dataset.aosDuration = 1000;
-      });
-      AOS.init({
-        duration:2000,
-      });
-    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/TextPlugin.min.js"></script>
-    <script>
-      gsap.registerPlugin(TextPlugin);
-      gsap.to('.lead', {duration: 2, delay: 1.5, text: 'Mahasiswa | Pengangguran Sukses <i class="bi bi-check-lg">'});
-      gsap.from('.jumbotron img', {duration: 1, rotateY: 360, opacity: 0});
-      gsap.from('.navbar', {duration: 1.5, y: '-100%', opacity: 0, ease: 'bounce'});
-      gsap.from('.display-4', {duration: 1, x: -50, opacity: 0, delay: 0.5, ease: 'back'});
-    </script>
-
-    <script>
-      const scriptURL = 'https://script.google.com/macros/s/AKfycbyHfIM28nczZigPhh4QnbW7ln_3vTCXikkxk5MiS4CJYWz5C4gt1LSUgUFVmj3XMypOJg/exec';
-      const form = document.forms['sahlan-contact-form'];
-      const btnKirim = document.querySelector('.btn-kirim');
-      const btnLoading = document.querySelector('.btn-loading');
-      const myAlert = document.querySelector('.my-alert');
-
-      form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        // ketika tombol submit di click
-        // tampilkan tombol loading, hilangkan tombol kirim
-        btnLoading.classList.toggle('d-none');
-        btnKirim.classList.toggle('d-none');
-        fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-          .then((response) => {
-            // tampilkan tombol Kirim, hilangkan tombol loading
-            btnLoading.classList.toggle('d-none');
-            btnKirim.classList.toggle('d-none');
-            // tampilkan Alert
-            myAlert.classList.toggle('d-none');
-            // reset isi formnya
-            form.reset();
-            console.log('Success!', response);
-          })
-          .catch((error) => console.error('Error!', error.message));
-      });
-    </script>
+    <script src="js/main.js"></script>
   </body>
 </html>
